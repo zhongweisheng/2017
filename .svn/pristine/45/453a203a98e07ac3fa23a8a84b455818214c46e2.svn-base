@@ -1,0 +1,41 @@
+Redis介绍以及安装（Linux） (2014-11-14 17:48:31)转载▼
+标签： redis安装 	分类： php技术
+redis是当前比较热门的NOSQL系统之一，它是一个key-value存储系统。和Memcached类似，但很大程度补偿了 memcached的不足，它支持存储的value类型相对更多，包括string、list、set、zset和hash。这些数据类型都支持 push/pop、add/remove及取交集并集和差集及更丰富的操作。在此基础上，redis支持各种不同方式的排序。Redis数据都是缓存在计 算机内存中，并且会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件。
+     redis官网地址：http://www.redis.io/
+     最新版本：2.8.3
+     在Linux下安装Redis非常简单，具体步骤如下（官网有说明）：
+     1、下载源码，解压缩后编译源码。
+$ wget http://download.redis.io/releases/redis-2.8.3.tar.gz $ tar xzf redis-2.8.3.tar.gz $ cd redis-2.8.3 $ make
+     2、编译完成后，在Src目录下，有四个可执行文件redis-server、redis-benchmark、redis-cli和redis.conf。然后拷贝到一个目录下。
+mkdir /usr/redis 
+cp redis-server /usr/redis 
+cp redis-benchmark /usr/redis 
+cp redis-cli /usr/redis 
+cd ../
+cp redis.conf /usr/redis 
+cd /usr/redis
+     3、启动Redis服务。
+$ redis-server redis.conf
+     4、然后用客户端测试一下是否启动成功。
+$ redis-cli redis> set foo bar OK redis> get foo "bar"
+
+
+/sbin/iptables -A INPUT -p tcp -m state --state NEW -m tcp --dport 6379 -j ACCEPT
+
+
+
+redis-cli -h 162.168.1.49 -p 6379 
+> set name ff
+> get name 
+
+redis-cli shutdown  
+
+Redis-server /usr..../redis.conf 启动redis服务，并指定配置文件
+Redis-cli 启动redis 客户端
+Pkill redis-server 关闭redis服务
+Redis-cli shutdown 关闭redis客户端
+Netstat -tunpl|grep 6379 查看redis 默认端口号6379占用情况
+
+
+
+
